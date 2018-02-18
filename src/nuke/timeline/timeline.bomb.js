@@ -2,17 +2,16 @@ console.log("holla from bomb NEW  ");
 var BOMBER = 'timeline';
 
 function onMessage(request, sender, sendResponse) {
-  console.log('MESSAGE ', request);
+  console.log('BOMBER REQUEST ', request);
+  var i = request.i;
   if (request.message === 'go_bomber' && request.bomber === BOMBER) {
     var clickDeletePost = function clickDeletePost($selection) {
       $selection[0].click();
-      console.log('sending res $$$');
       console.dir(sendResponse);
-      $selection[0].className += ' fbn--nuked';
       console.dir($selection);
       waitForItemAbsence('h3:contains(Delete Post)', function () {
         console.log('GONEEE NOT SENDING ', sendResponse);
-        //sendResponse({message: 'bomber_done', bomber: 'timeline'});
+        sendResponse({message: 'bomber_done', bomber: 'timeline', i: request.i });
       })
     };
 
@@ -20,9 +19,10 @@ function onMessage(request, sender, sendResponse) {
     $storyOptions.click();
 
     waitForItem('a:contains(Delete)', function ($selection) {
-      console.log('GOT IT ', $selection);
-      $selection[0].click();
-      waitForItem('button:contains(Delete Post):not(.fbn--nuked)', clickDeletePost);
+      console.log("SELECTOR?? ", $selection);
+      $($selection).addClass('fbn--nuked');
+      $selection[i].click();
+      waitForItem('button:contains(Delete Post)', clickDeletePost);
     });
 
     console.log("RETURN NIG TRUE ", true);
@@ -31,4 +31,4 @@ function onMessage(request, sender, sendResponse) {
   return true;
 }
 
-chrome.runtime.onMessage.addListener(onMessage);
+window['timeline.bomber'] = onMessage;

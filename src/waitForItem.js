@@ -43,7 +43,7 @@ window.waitForItemAbsence = function(selector, fn, _delay) {
   }
   else {
     setTimeout(function () {
-      waitForItem(selector, fn, _delay + 200)
+      waitForItemAbsence(selector, fn, _delay + 200)
     }, _delay);
   }
 }

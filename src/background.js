@@ -9,7 +9,8 @@ function nukeRoundResponse (response) {
     sendMessageToActiveTab(response, nukeRoundResponse);
   }
   if (response.message === 'bomber_done') {
-    sendMessageToActiveTab({ message: 'bomber_go', bomber: response.bomber });
+    response.i++;
+    sendMessageToActiveTab({ message: 'go_bomber', bomber: response.bomber, i: response.i });
   }
 }
 
@@ -24,7 +25,7 @@ function nukeRound(response) {
 
   var toNuke = response.nuke.pop();
 
-  sendMessageToActiveTab({ message: 'nuke_round', round: toNuke }, nukeRoundResponse);
+  sendMessageToActiveTab({ message: 'nuke_round', nuker: toNuke, i: 0 }, nukeRoundResponse);
 }
 
 
