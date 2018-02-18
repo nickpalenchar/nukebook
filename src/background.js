@@ -1,11 +1,8 @@
 console.log('[background.js] v10');
-alert('v10');
 
 function nukeRoundResponse (response) {
-  alert('got a nuke res ' + JSON.stringify(response));
   if (response.message === 'go_bomber') {
     // forward the message back
-    alert('sending bomber go!');
     sendMessageToActiveTab(response, nukeRoundResponse);
   }
   if (response.message === 'bomber_done') {
@@ -33,7 +30,6 @@ function nukeRound(response) {
 function browserClickResponse(response) {
   console.log('message recieved ', response);
   if (response.message === 'begin_nuke') {
-    alert('renieuhoen');
     nukeRound(response);
   }
 }

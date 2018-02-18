@@ -18,10 +18,10 @@ function onMessage(request, sender, sendResponse) {
     var $storyOptions = $("[aria-label='Story options']")[0];
     $storyOptions.click();
 
-    waitForItem('a:contains(Delete)', function ($selection) {
+    waitForItem('a:contains(Delete):not(.fbn--nuked)', function ($selection) {
       console.log("SELECTOR?? ", $selection);
       $($selection).addClass('fbn--nuked');
-      $selection[i].click();
+      $selection[0].click();
       waitForItem('button:contains(Delete Post)', clickDeletePost);
     });
 
