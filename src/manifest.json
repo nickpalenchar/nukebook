@@ -9,7 +9,7 @@
         "http://facebook.com/*",
         "https://www.facebook.com/*"
       ],
-      "js": ["jquery-3.3.1.min.js",
+      "js": ["jquery-3.3.1.min.js", "waitForItem.js",
         "init.js",
         "nuke/timeline/timeline.bomb.js",
         "nuke/timeline/timeline.nuker.js"

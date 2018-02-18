@@ -4,7 +4,7 @@ var removeFiles = require("gulp-remove-files");
 var exec = require('child_process').exec;
 
 gulp.task("clean", function(){
-  exec("rm -rf build");
+  exec("rm -rf build/*");
 });
 
 gulp.task("transpile", function () {
@@ -30,5 +30,5 @@ gulp.task("non-js", function(){
 gulp.task("build", ["clean", "transpile", "js-libraries", "non-js"]);
 
 gulp.task("watch", function(){
-  gulp.watch("src/*.js", ["build"]);
+  gulp.watch("src/**", ["build"]);
 });
