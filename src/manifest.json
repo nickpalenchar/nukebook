@@ -9,11 +9,15 @@
         "http://facebook.com/*",
         "https://www.facebook.com/*"
       ],
-      "js": ["jquery-3.3.1.min.js", "es6-promise.min.js", "es6-promise.auto.min.js", "content.js"]
+      "js": ["jquery-3.3.1.min.js",
+        "init.js",
+        "nuke/timeline/timeline.bomb.js",
+        "nuke/timeline/timeline.nuker.js"
+      ]
     }
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["browser-polyfill.min.js", "background.js"]
   },
   "browser_action": {
     "default_icon": "icon.png"
