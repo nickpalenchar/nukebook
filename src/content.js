@@ -9,14 +9,12 @@ chrome.runtime.onMessage.addListener(
         console.log('selector?? ', '#' + $storyOptions.getAttribute('id') + ' a:contains(Delete)');
         window.$ = $;
 
-        waitForItem('a:contains(Delete)', function($selection){
-          console.log('GOT IT ', $selection);
-          $selection[0].click();
-        });
+        waitForItem('a:contains(Delete)')
+          .then(function($selection){
+            console.log('GOT IT ', $selection);
+            $selection[0].click();
+          });
       }
-
-      var firstHref = $("a[href^='http']").eq(0).attr("href");
-      console.log(firstHref);
     }
   }
 );
@@ -32,10 +30,11 @@ function waitForItem(selector, fn, _delay){
       // 20th time we've tried again.
       reject(Error("cannot find element ", selector));
     }
-
+    console.log('seleting...')
     var $selection = $(selector);
 
     if($selection.length > 0){
+      console.log("found selection ", $selection);
       resolve($selection);
     }
     else {
