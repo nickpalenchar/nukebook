@@ -1,15 +1,13 @@
 console.log('[background.js] v10');
-alert('v10');
 
 function nukeRoundResponse (response) {
-  alert('got a nuke res ' + JSON.stringify(response));
   if (response.message === 'go_bomber') {
     // forward the message back
-    alert('sending bomber go!');
     sendMessageToActiveTab(response, nukeRoundResponse);
   }
   if (response.message === 'bomber_done') {
-    sendMessageToActiveTab({ message: 'bomber_go', bomber: response.bomber });
+    response.i++;
+    sendMessageToActiveTab({ message: 'go_bomber', bomber: response.bomber, i: response.i });
   }
 }
 
@@ -24,7 +22,7 @@ function nukeRound(response) {
 
   var toNuke = response.nuke.pop();
 
-  sendMessageToActiveTab({ message: 'nuke_round', round: toNuke }, nukeRoundResponse);
+  sendMessageToActiveTab({ message: 'nuke_round', nuker: toNuke, i: 0 }, nukeRoundResponse);
 }
 
 
@@ -32,7 +30,6 @@ function nukeRound(response) {
 function browserClickResponse(response) {
   console.log('message recieved ', response);
   if (response.message === 'begin_nuke') {
-    alert('renieuhoen');
     nukeRound(response);
   }
 }
