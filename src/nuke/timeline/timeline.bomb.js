@@ -8,7 +8,6 @@ function onMessage(request, sender, sendResponse) {
     var $storyOptions = $("[aria-label='Story options']")[0];
     $storyOptions.click();
 
-    console.log('selector?? ', '#' + $storyOptions.getAttribute('id') + ' a:contains(Delete)');
 
     waitForItem('a:contains(Delete)', function ($selection) {
       console.log('GOT IT ', $selection);
@@ -17,13 +16,15 @@ function onMessage(request, sender, sendResponse) {
     });
     function clickDeletePost($selection){
       $selection[0].click();
+      console.log('sending res $$$');
       sendResponse({ message: 'bomber_done', bomber: 'timeline' });
-      $selection[0].addClass('fbn--nuked');
+      $selection[0].className += ' fbn--nuked';
+      console.dir($selection);
     }
-
+    console.log("RETURN NIG TRUE ", true);
     return true;
   }
-
+  return true;
 }
 
 chrome.runtime.onMessage.addListener(onMessage);
