@@ -9,7 +9,7 @@
         "http://facebook.com/*",
         "https://www.facebook.com/*"
       ],
-      "js": ["jquery-3.3.1.min.js", "content.js"]
+      "js": ["jquery-3.3.1.min.js", "es6-promise.min.js", "es6-promise.auto.min.js", "content.js"]
     }
   ],
   "background": {

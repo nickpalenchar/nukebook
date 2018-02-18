@@ -7,10 +7,13 @@ chrome.runtime.onMessage.addListener(
         $storyOptions.click();
 
         console.log('selector?? ', '#' + $storyOptions.getAttribute('id') + ' a:contains(Delete)');
-        window.$ = $;
 
-        waitForItem('a:contains(Delete)')
-          .then(function($selection){
+        let p = waitForItem('a:contains(Delete)');
+        window.p = p;
+        chrome.p = p;
+        console.log('ueoo', window);
+        console.log("P???? ", p);
+        p.then(function($selection){
             console.log('GOT IT ', $selection);
             $selection[0].click();
           });
@@ -30,12 +33,12 @@ function waitForItem(selector, fn, _delay){
       // 20th time we've tried again.
       reject(Error("cannot find element ", selector));
     }
-    console.log('seleting...')
+    console.log('seleting...');
     var $selection = $(selector);
 
     if($selection.length > 0){
       console.log("found selection ", $selection);
-      resolve($selection);
+      return resolve($selection);
     }
     else {
       setTimeout(function(){waitForItem(selector, fn, _delay*2)}, _delay);
