@@ -8,7 +8,6 @@ function onMessage(request, sender, sendResponse) {
   else {
     return sendResponse();
   }
-  return true; // asynchronous messaging
 }
 
 chrome.runtime.onMessage.addListener(onMessage);
