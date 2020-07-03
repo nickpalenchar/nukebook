@@ -86,7 +86,7 @@
     "resolve-url": "^0.2.1",
     "safe-buffer": "^5.1.1",
     "sequencify": "^0.0.7",
-    "set-value": "^2.0.0",
+    "set-value": "^2.0.1",
     "sigmund": "^1.0.1",
     "snapdragon-node": "^2.1.1",
     "snapdragon-util": "^3.0.1",
